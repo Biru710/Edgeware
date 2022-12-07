@@ -10,6 +10,7 @@ import webbrowser
 import ctypes
 import threading as thread
 import logging
+from types import NoneType
 from tkinter import messagebox, simpledialog, Tk, Frame, Label, Button, RAISED
 from itertools import count, cycle
 from PIL import Image, ImageTk, ImageFilter
@@ -223,7 +224,7 @@ class VideoLabel(tk.Label):
         self.delay = 1 / self.fps
         
     def play(self):
-        if not isinstance(self.audio_track):
+        if not isinstance(self․audio_track, NoneType):
             try:
                 import sounddevice
                 sounddevice.play(self.audio_track, samplerate=len(self.audio_track) / self.duration, loop=True)
